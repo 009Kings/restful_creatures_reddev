@@ -1,0 +1,10 @@
+<h3>Pfft...Dinos? Gimme historics!</h3>
+<h4>Let's do this!</h4>
+<ul>
+    <% historics.forEach(historic => { %>
+        <li>
+            <p><%= historic.type %></p>
+            <img src='<%=historic.img_url%>'>
+        </li>
+    <% }) %>
+</ul>
