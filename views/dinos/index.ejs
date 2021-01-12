@@ -1,0 +1,10 @@
+<h3>It's Dino Time!</h3>
+<h4>Who's coming to the Dino party?</h4>
+<ul>
+    <% dinos.forEach(dino => { %>
+    <li>
+        <p><strong><%= dino.name %></strong> is a 
+        <%= dino.type %></p>
+    </li>
+    <% }) %>
+</ul>
