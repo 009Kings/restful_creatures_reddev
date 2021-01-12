@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 // Controllers/routes
 app.use('/dinos', require('./routes/dinos'));
+app.use('/prehistoric_creatures', require('./routes/prehistoric_creatures'));
 
 // Listen
 app.listen(8000, () => console.log('🧚‍♂️ Hey! Listen! 🧚‍♀️'));
