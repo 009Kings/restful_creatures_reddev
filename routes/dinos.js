@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
-const { route } = require('./prehistoric_creatures');
 
 // Mounted at /dinos
 
@@ -61,7 +60,24 @@ router.get('/:id/edit', (req, res) => {
     }
 });
 
+// Update Route
 router.put('/:id', (req, res) => {
+    console.log(`|------ PUT to /dinos/${req.params.id}`);
+    console.log(req.body);
+
+    // Get the dino from my data store (same logic as Show/Details)
+    let dinoIndex = req.params.id;
+    let dinos = fs.readFileSync('./dinos.json');
+    let dinoData = JSON.parse(dinos); // is an array
+    let thisDino = dinoData[dinoIndex];
+
+    // Update my dino
+
+
+    // Write new dino to data store
+
+    // Send my response (redirect to the Show/Details)
+
     res.send(`Editing dino at ${req.params.id}`);
 })
 
