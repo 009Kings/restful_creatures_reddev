@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
         res.redirect('/dinos/new');
     } else {
         // Ship it
-        res.render('dinos/show', { dino: thisDino });
+        res.render('dinos/show', { dino: thisDino, dinoId: dinoIndex });
     }
 });
 
@@ -63,22 +63,22 @@ router.get('/:id/edit', (req, res) => {
 // Update Route
 router.put('/:id', (req, res) => {
     console.log(`|------ PUT to /dinos/${req.params.id}`);
-    console.log(req.body);
 
     // Get the dino from my data store (same logic as Show/Details)
     let dinoIndex = req.params.id;
     let dinos = fs.readFileSync('./dinos.json');
     let dinoData = JSON.parse(dinos); // is an array
-    let thisDino = dinoData[dinoIndex];
 
     // Update my dino
-
+    dinoData[dinoIndex] = req.body;
 
     // Write new dino to data store
+    // Turn dino array into JSON
+    let dinoJSON = JSON.stringify(dinoData);
+    fs.writeFileSync('./dinos.json', dinoJSON);
 
     // Send my response (redirect to the Show/Details)
-
-    res.send(`Editing dino at ${req.params.id}`);
+    res.redirect(`/dinos/${req.params.id}`);
 })
 
 // Create — POST /dinos
