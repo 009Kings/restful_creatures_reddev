@@ -1,6 +1,7 @@
 // Requirements
 const express = require('express');
 const layouts = require('express-ejs-layouts');
+const methodOverride = require('method-override');
 const path = require('path');
 
 //  App Setup
@@ -9,6 +10,7 @@ app.set('view engine', 'ejs');
 app.use(layouts);
 app.use(express.static(path.join(__dirname, '/static')));
 app.use(express.urlencoded({ extended: false })); //Body parsing middleware
+app.use(methodOverride('_method'));
 
 // Global routes
 app.get('/', (req, res) => {

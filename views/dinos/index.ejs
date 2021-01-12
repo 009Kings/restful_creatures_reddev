@@ -1,10 +1,9 @@
 <h3>It's Dino Time!</h3>
 <h4>Who's coming to the Dino party?</h4>
 <ul>
-    <% dinos.forEach(dino => { %>
+    <% dinos.forEach((dino, index) => { %>
     <li>
-        <p><strong><%= dino.name %></strong> is a 
-        <%= dino.type %></p>
+        <a href="/dinos/<%= index %>"><strong><%= dino.name %></strong></a>
     </li>
     <% }) %>
 </ul>
